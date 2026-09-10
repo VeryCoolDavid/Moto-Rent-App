@@ -15,4 +15,4 @@ A motorcycle rental web application that allows users to explore available motor
 - HTML
 - CSS
 - TypeScript
-- JavaScript
+- # JavaScript
