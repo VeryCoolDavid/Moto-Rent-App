@@ -26,7 +26,7 @@ function renderMotorcycleCard(motorcycle) {
           <div class="motorcycle-card-footer">
             <div>
               <p class="motorcycle-card-price">
-                $${motorcycle.price}
+                  ₹${motorcycle.price}
               </p>
               <p class="motorcycle-card-engine">undefinedcc</p>
             </div>
@@ -38,9 +38,7 @@ function renderMotorcycleCard(motorcycle) {
       </div>`;
 }
 class MotorcycleGalleryApp {
-    constructor() {
-        this.allMotorcycles = [];
-    }
+    allMotorcycles = [];
     async loadMotorcycles() {
         this.allMotorcycles = await fetchMotorcycles();
         this.renderMotorcycles();
@@ -49,18 +47,18 @@ class MotorcycleGalleryApp {
         const motorcycleGrid = document.querySelector("#motorcycle-grid");
         const resultsNumber = document.querySelector("#results-number");
         resultsNumber.textContent = `${motorcycles.length}`;
-        motorcycleGrid.innerHTML =
-            motorcycles.map(renderMotorcycleCard).join("");
+        motorcycleGrid.innerHTML = motorcycles.map(renderMotorcycleCard).join("");
     }
     filter() {
         const nameFilterInput = document.querySelector("#name-filter-input");
         nameFilterInput.addEventListener("input", () => {
             const filterValue = nameFilterInput.value.toLowerCase();
-            const filteredMotorcycles = this.allMotorcycles.filter(motorcycle => motorcycle.name.toLowerCase().includes(filterValue));
+            const filteredMotorcycles = this.allMotorcycles.filter((motorcycle) => motorcycle.name.toLowerCase().includes(filterValue));
             const motorcycleGrid = document.querySelector("#motorcycle-grid");
             const resultsNumber = document.querySelector("#results-number");
-            motorcycleGrid.innerHTML =
-                filteredMotorcycles.map(renderMotorcycleCard).join("");
+            motorcycleGrid.innerHTML = filteredMotorcycles
+                .map(renderMotorcycleCard)
+                .join("");
             resultsNumber.textContent = `${filteredMotorcycles.length}`;
         });
     }

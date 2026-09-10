@@ -1,29 +1,34 @@
-type Category = 'sport'|'cruiser'|'Touring'| 'Dirt'|'Adventure'| 'Naked'| 'Electric';
+type Category =
+  | "sport"
+  | "cruiser"
+  | "Touring"
+  | "Dirt"
+  | "Adventure"
+  | "Naked"
+  | "Electric";
 
 interface Motorcycle {
-  id:string;
-  name:string;
-  manufacturer:string;
-  category:Category;
-  price:number;
-  image_url:string;
-  created_at:Date;
-  description:string;
-  year:number;
+  id: string;
+  name: string;
+  manufacturer: string;
+  category: Category;
+  price: number;
+  image_url: string;
+  created_at: Date;
+  description: string;
+  year: number;
 }
 
-async function fetchMotorcycles():Promise<Motorcycle[]>{
+async function fetchMotorcycles(): Promise<Motorcycle[]> {
+  const response = await fetch(
+    "https://cdn.freecodecamp.org/curriculum/labs/data/motorcycles.json"
+  );
 
-  const response= await fetch(
-  "https://cdn.freecodecamp.org/curriculum/labs/data/motorcycles.json" 
-   );
-
-   const data = await response.json()
-   return data
+  const data = await response.json();
+  return data;
 }
 
-function renderMotorcycleCard(motorcycle:Motorcycle):string{
-  
+function renderMotorcycleCard(motorcycle: Motorcycle): string {
   return `<div class="motorcycle-card">
         <div class="motorcycle-card-image-container">
           <img src="${motorcycle.image_url}" alt="${motorcycle.name}"class="motorcycle-card-image">
@@ -45,7 +50,7 @@ function renderMotorcycleCard(motorcycle:Motorcycle):string{
           <div class="motorcycle-card-footer">
             <div>
               <p class="motorcycle-card-price">
-                $${motorcycle.price}
+                  ₹${motorcycle.price}
               </p>
               <p class="motorcycle-card-engine">undefinedcc</p>
             </div>
@@ -54,51 +59,50 @@ function renderMotorcycleCard(motorcycle:Motorcycle):string{
             </button>
           </div>
         </div>
-      </div>`
+      </div>`;
 }
 
-class MotorcycleGalleryApp{
+class MotorcycleGalleryApp {
   private allMotorcycles: Motorcycle[] = [];
-  
-   async loadMotorcycles(): Promise<void> {
+
+  async loadMotorcycles(): Promise<void> {
     this.allMotorcycles = await fetchMotorcycles();
 
     this.renderMotorcycles();
   }
 
-  renderMotorcycles(motorcycles: Motorcycle[] = this.allMotorcycles):void{
-     const motorcycleGrid = document.querySelector("#motorcycle-grid")!;
+  renderMotorcycles(motorcycles: Motorcycle[] = this.allMotorcycles): void {
+    const motorcycleGrid = document.querySelector("#motorcycle-grid")!;
 
-     const resultsNumber = document.querySelector("#results-number")!; 
-     resultsNumber.textContent = `${motorcycles.length}`;
+    const resultsNumber = document.querySelector("#results-number")!;
+    resultsNumber.textContent = `${motorcycles.length}`;
 
-     motorcycleGrid.innerHTML = 
-     motorcycles.map(renderMotorcycleCard).join("");
+    motorcycleGrid.innerHTML = motorcycles.map(renderMotorcycleCard).join("");
   }
 
-  filter():void{
-    const nameFilterInput =
-  document.querySelector("#name-filter-input") as HTMLInputElement;
+  filter(): void {
+    const nameFilterInput = document.querySelector(
+      "#name-filter-input"
+    ) as HTMLInputElement;
 
-  nameFilterInput.addEventListener("input", () => {
-  const filterValue = nameFilterInput.value.toLowerCase();
+    nameFilterInput.addEventListener("input", () => {
+      const filterValue = nameFilterInput.value.toLowerCase();
 
-  const filteredMotorcycles = this.allMotorcycles.filter(
-    motorcycle =>
-      motorcycle.name.toLowerCase().includes(filterValue)
-  );
+      const filteredMotorcycles = this.allMotorcycles.filter((motorcycle) =>
+        motorcycle.name.toLowerCase().includes(filterValue)
+      );
 
-  const motorcycleGrid = document.querySelector("#motorcycle-grid")!;
-  const resultsNumber = document.querySelector("#results-number")!;
+      const motorcycleGrid = document.querySelector("#motorcycle-grid")!;
+      const resultsNumber = document.querySelector("#results-number")!;
 
-  motorcycleGrid.innerHTML =
-    filteredMotorcycles.map(renderMotorcycleCard).join("");
+      motorcycleGrid.innerHTML = filteredMotorcycles
+        .map(renderMotorcycleCard)
+        .join("");
 
-  resultsNumber.textContent = `${filteredMotorcycles.length}`;
-});
+      resultsNumber.textContent = `${filteredMotorcycles.length}`;
+    });
   }
 }
-
 
 const app = new MotorcycleGalleryApp();
 app.loadMotorcycles();
