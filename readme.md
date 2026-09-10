@@ -1,1 +1,1 @@
-A motorcycle rental platform for browsing and booking motorcycles online.
+A motorcycle rental platform for browsing and booking motorcycles online (in development).
