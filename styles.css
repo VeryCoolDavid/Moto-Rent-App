@@ -72,7 +72,7 @@ body {
 }
 
 .from-gray-900 {
-  --tw-gradient-from: #111827;
+  --tw-gradient-from: #121127;
   --tw-gradient-to: rgb(17 24 39 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
@@ -83,27 +83,27 @@ body {
 }
 
 .to-gray-900 {
-  --tw-gradient-to: #111827;
+  --tw-gradient-to: #121127;
 }
 
 .from-orange-600 {
-  --tw-gradient-from: #ea580c;
+  --tw-gradient-from: #24306d;
   --tw-gradient-to: rgb(234 88 12 / 0);
   --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
 }
 
 .via-orange-500 {
   --tw-gradient-to: rgb(249 115 22 / 0);
-  --tw-gradient-stops: var(--tw-gradient-from), #f97316, var(--tw-gradient-to);
+  --tw-gradient-stops: var(--tw-gradient-from), #0f0cb1, var(--tw-gradient-to);
 }
 
 .to-red-500 {
-  --tw-gradient-to: #ef4444;
+  --tw-gradient-to: #3b86c4;
 }
 
 /* Colors */
 .bg-gray-900 {
-  background-color: #111827;
+  background-color: #121127;
 }
 
 .text-white {
@@ -115,8 +115,8 @@ body {
 }
 
 .text-orange-500 {
-  color: #f97316;
-  stroke: #f97316;
+  color: #1c3eff;
+  stroke: #270fff;
 }
 
 /* Flexbox utilities */
@@ -249,7 +249,7 @@ body {
 }
 
 .focus\:ring-orange-500:focus {
-  --tw-ring-color: #f97316;
+  --tw-ring-color:  #f91616;
 }
 
 .focus\:border-transparent:focus {
@@ -340,7 +340,7 @@ body {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background-color: #f97316;
+  background-color:  #f91616;
   color: #ffffff;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
@@ -403,7 +403,7 @@ body {
 .motorcycle-card-price {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #ea580c;
+  color: #cf1616;
 }
 
 .motorcycle-card-engine {
@@ -412,7 +412,7 @@ body {
 }
 
 .motorcycle-card-button {
-  background-color: #f97316;
+  background-color: #f91616;
   color: #ffffff;
   padding: 0.5rem 1.5rem;
   border-radius: 0.5rem;
@@ -423,7 +423,7 @@ body {
 }
 
 .motorcycle-card-button:hover {
-  background-color: #ea580c;
+  background-color:  #f91616;
 }
 
 .no-results {
@@ -437,6 +437,7 @@ body {
 }
 
 .results-count {
+  margin-top:0.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -451,7 +452,7 @@ body {
 
 /* Additional utility classes for search input */
 .bg-gray-700 {
-  background-color: #374151;
+  background-color: #373d51;
 }
 
 .border-gray-600 {
